@@ -55,18 +55,18 @@ export default class Chat extends Component {
 
     render() {
         return (
-            <div>
+            <div className="chat-container">
+                <div className="logged">Logged as<strong>{this.state.user?.email}</strong></div>
                 <div className="chats">
                     {this.state.chats.map((chat) => {
                         return <p key={chat.timestamp}>{chat.content}</p>;
                     })}
                 </div>
-                <form id="send-message" onSubmit={this.handleSubmit}>
-                    <input onChange={this.handleChange} value={this.state.content} />
+                <form className="inputs-container" id="send-message" onSubmit={this.handleSubmit}>
+                    <input onChange={this.handleChange} value={this.state.content} placeholder="Tip your message here..." />
                     {this.state.error ? <p>{this.state.writeError}</p> : null}
                     <button type="submit">Send</button>
                 </form>
-                <div>Login in as: <strong>{this.state.user?.email}</strong></div>
             </div>
         );
     }

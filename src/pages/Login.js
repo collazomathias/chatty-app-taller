@@ -50,23 +50,23 @@ export default class Login extends Component {
 
     render() {
         return (
-            <div>
-                <form autoComplete="off" onSubmit={ this.handleSubmit } id="form-login">
-                    <h1>Login to <Link to="/">Chatty</Link></h1>
-                    <div>
+            <div className="login-container">
+                { this.state.error ? <p className="message-error">{this.state.error}</p> : null }
+                <form className="login-form-container" autoComplete="off" onSubmit={ this.handleSubmit } id="form-login">
+                    <div className="title">
+                        <h1><Link to="/">Chatty</Link></h1>
+                    </div>
+                    <p className="subtitle">Enter your credentials</p>
+                    <div className="input-login">
                         <input placeholder="Email" name="email" type="email" onChange={ this.handleChange } value={ this.state.email } />
                     </div>
-                    <div>
+                    <div className="input-login">
                         <input placeholder="Password" name="password" onChange={ this.handleChange } value={ this.state.password } type="password" />
                     </div>
-                    <div> { this.state.error ? ( <p>{this.state.error}</p> ) : null }
+                    <div className="button-login"> 
                         <button type="submit">Login</button>
                     </div>
-                    <hr />
                     <p>Don't have an account? <Link to="/signup">Sign up</Link></p>
-                    <p>Or</p>
-                    <button id="sign-in-with-google" onClick={this.googleSignIn} type="button">Sign up with Google</button>
-                    <button id="sign-in-with-github" type="button" onClick={this.githubSignIn}>Sign up with GitHub</button>
                 </form>
             </div>
         );
